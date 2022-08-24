@@ -4,27 +4,19 @@ import { RadioGroup, Radio, Button } from '@material-ui/core';
 import Timer from './Timer';
 import { useEffect, useState } from 'react';
 import Records from './records.json'
+import axios from 'axios';
 import JsonData from './JsonData';
 import { useNavigate } from "react-router-dom";
+import { decodeToken, getToken } from "./LocalStorageServices";
 
 
 import {
-    BoldLink,
-    TextArea,
-    FieldContainer_RF2,
+ 
     TimerBox,
     BoxContainer,
     FieldContainer_RF,
-    FieldError,
-    FormContainer,
-    FormSuccess,
-    Input_RF,
-    Input_RF2,
-    Label,
-    MutedLink,
     SubmitButton,
-    FormError,
-    Validity
+
 } from "./common";
 
 export default function TestPage() { 
@@ -32,41 +24,49 @@ export default function TestPage() {
 
     var [data,setData] =useState([])
 
+    var  [score , setScore] =useState(0)
+
+
+    if(getToken){ 
+        let decoded_token = decodeToken()
+        var user_fk=decoded_token.user_id
+      }
+
+    
     const handleSubmit = async(e)=>{
         e.preventDefault()
-         console.log(data)
-//         const headers ={
+    console.log("Submit Function",  score)
+// console.log(user_fk)
+        var test_data={
+            score,
+            user_fk
+        }
+        console.log(test_data)
 
-//             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("Access_token")),
-//             'Content-Type': 'application/json',
-//             'accept': 'application/json',
-//           }
-//           console.log(headers.Authorization)
+        const headers ={
+
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("Access_token")),
+            'Content-Type': 'application/json',
+            'accept': 'application/json',
+          }
+          console.log(headers.Authorization)
           
-//     const response = await axios
-//     .post("http://127.0.0.1:8000/Kavtech/profile/", data,{
-// headers: headers
-//     }).catch((err) => {
-//       console.log(err)
-// });
-// console.log(response)
-
-
-
-
-
-
-
-
-
-    }
-    const  getResult=(id,value)=> {
-        data={id,value}
-        setData((prevData)=>{
-            return [...prevData,data]
-        })
-   }
     
+    const response = await axios
+    .post("http://127.0.0.1:8000/Kavtech/quiz/test/",test_data,{
+        headers:headers
+    })
+    .catch((err) => {
+      console.log(err)
+});
+
+    console.log(response)
+}
+
+const  getResult=(score)=> {
+    setScore(score)
+}
+
     return (
         <>
 <br/>
@@ -86,13 +86,13 @@ export default function TestPage() {
 <h1 style={{color:"red" , padding:"34px 0px 0px"}}> Rendering 100 questions from a server!! </h1>
 <div style={{color:"blue" , padding:"34px"}}>
 
- 
+
+
+<JsonData result={getResult}/> {/*   */} 
 
 
 
 
-
-<JsonData result={getResult}/>
 <SubmitButton type='submit' onClick={handleSubmit}>Submit</SubmitButton>
 
 

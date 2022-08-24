@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext,useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Radio, RadioGroup } from '@material-ui/core';
 import { FormControl,FormControlLabel,FormLabel  } from '@mui/material';
@@ -6,9 +6,8 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { decodeToken, getToken } from "./LocalStorageServices";
-
-// import { DatePicker } from 'react-datepicker';
 import DateTimePicker from "./DateTimePicker";
+
 
 import {
  
@@ -25,6 +24,23 @@ import {
  from "./common";
 
 function RegistrationForm(props) {
+  const [experience, setExp]= useState(0)
+
+useEffect(()=>{
+  
+  if(formik.values.experience==='Fresher')  {
+    setExp(0)
+  console.log("From use Effect",experience)
+  }
+  else if(formik.values.experience==='1-2 years'){setExp(1)
+  console.log("From use Effect", experience)
+}
+
+},[experience])
+
+
+  
+
   const navigate = useNavigate();
   const getresult = (value)=>{
    
@@ -71,6 +87,9 @@ console.log(response)
 
 };
 
+
+
+
 const formik = useFormik({
     initialValues: {
       
@@ -94,8 +113,9 @@ const formik = useFormik({
     onSubmit,
 
   });
-  
-  return (
+
+
+    return (
  
 <>
 
@@ -109,7 +129,7 @@ const formik = useFormik({
 <br/>
 <BoxContainer>
   
-  <FormContainer onSubmit={formik.handleSubmit}>   
+<FormContainer onSubmit={formik.handleSubmit}>   
 
  <Label>First Name:   <br/>
 <Input_RF3
@@ -145,6 +165,7 @@ onBlur={formik.handleBlur}
 required />
 </Label>
 <br/> */}
+
 
 
 <Label>Date of Birth:   
@@ -236,6 +257,7 @@ value={formik.values.phd_institute}
 <br/>  
 </Label>
 <br/>
+
 {/* <Label>Job Openings(Apply For):  */}
   {/* <br/>
    <Checkbox type="checkbox" onChange={formik.handleChange} value="IT" required name="job_openings" /> IT/Infrastructure
@@ -276,7 +298,7 @@ required /> */}
 
 {formik.values.sched_test==='later'? <DateTimePicker result={getresult} />:''}
   <br/>
-<SubmitButton type="submit"> submit</SubmitButton>
+ <SubmitButton type="submit"> submit</SubmitButton>
 </RadioGroup>
 </FormControl>
 </Label>

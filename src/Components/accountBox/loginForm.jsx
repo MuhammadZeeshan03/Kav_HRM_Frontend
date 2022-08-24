@@ -19,6 +19,7 @@ import {storeToken } from "./LocalStorageServices";
 function LoginForm(props) {
 
   const navigate = useNavigate();
+
   const [inpval,setInpval]=useState({
     username:"",
     password:""
@@ -60,8 +61,7 @@ else{
 
 }
 
-
-  return (
+return (
     <BoxContainer>
       <FormError>{error ? error : ""}</FormError>
       <FormContainer onSubmit={loginUser}>

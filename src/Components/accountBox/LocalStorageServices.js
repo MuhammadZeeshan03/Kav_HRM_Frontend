@@ -4,7 +4,7 @@ const storeToken = (value) =>{
 
         const {access,refresh}= value;
 
-        console.log("Token Stored");
+        // console.log("Token Stored");
         localStorage.setItem('Access_token', JSON.stringify(access))
         localStorage.setItem('Refresh_token', JSON.stringify(refresh))
     }
@@ -22,15 +22,15 @@ const getToken =()=>
     const decodeToken =()=>{
         let access_token= localStorage.getItem('Access_token')
         let token = JSON.parse(access_token)
-
-        var decode = jwt_decode(token)
-        console.log("Token Decoded")
-        console.log(decode)
+            var decode = jwt_decode(token)
+        // console.log("Token Decoded")
+        // console.log(decode)
         return(decode);
 
     }
 
 const removeToken = () =>{
+
     localStorage.removeItem('access_token')
 }
 export {storeToken,getToken,decodeToken,removeToken}
