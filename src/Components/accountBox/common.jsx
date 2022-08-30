@@ -5,15 +5,34 @@ export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  
+
 `;
 
 export const FormContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19);
+  // box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19);
 `;
+
+
+export const FormContainer_2 = styled.form`
+  width: 100%;
+  display: inline;
+  // flex-direction: row;
+  // box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19);
+`;
+
+
+export const ListItem = styled.li`
+//  display:content;
+ list-style-type: none;
+ display: inline;
+`;
+
+
+
 
 export const MutedLink = styled.a`
   font-size: 11px;
@@ -286,12 +305,13 @@ border-radius:18px;
 `;
 
 export const FieldContainer_RF = styled.div`
-  width: 70%;
+  width: 50%;
   margin:auto;
   display: flex;
   flex-direction: column;
   background: #3c67954a;
   border-radius: 25px;
+  
 `;
 
 export const FieldContainer_RF2 = styled.div`
@@ -301,7 +321,7 @@ export const FieldContainer_RF2 = styled.div`
   display: flex;
   flex-direction: column;
   // background: #3c67954a;
-  border-radius: 25px;
+  // border-radius: 25px;
 `;
 
 

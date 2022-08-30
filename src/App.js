@@ -20,6 +20,9 @@ import { FooterContainer } from './Components/Footer/containers/footer'
 import { AccountBox } from "./Components/accountBox";
 import RegistrationForm from './Components/accountBox/RegistrationForm';
 import LoginForm from './Components/accountBox/loginForm';
+import Jobopenings from './Components/accountBox/Jobopenings';
+import AddPerformace from './Components/accountBox/AddPerformance';
+
 const AppContainer = styled.div`
   
   width: 100%;
@@ -45,6 +48,9 @@ const App = () => {
         <Route path="/contact"  element={<Contact/>} />
        
         <Route path="/TestPage" element={<TestPage/>} />
+
+        <Route path="/jobOpening" element={<Jobopenings/>} />
+        <Route path="/perf" element={<AddPerformace/>} />
         
 
         

@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 import { RadioGroup, Radio, Button } from '@material-ui/core';
 import Timer from './Timer';
 import { useEffect, useState } from 'react';
-import Records from './records.json'
 import axios from 'axios';
 import JsonData from './JsonData';
 import { useNavigate } from "react-router-dom";
@@ -88,18 +87,12 @@ const  getResult=(score)=> {
 
 
 
-<JsonData result={getResult}/> {/*   */} 
-
-
-
-
+<JsonData result={getResult}/>
 <SubmitButton type='submit' onClick={handleSubmit}>Submit</SubmitButton>
-
 
 </div>
 </FieldContainer_RF>
 <br/>
-
 </>
 )
   

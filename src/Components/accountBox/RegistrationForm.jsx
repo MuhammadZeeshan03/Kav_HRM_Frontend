@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { decodeToken, getToken } from "./LocalStorageServices";
 import DateTimePicker from "./DateTimePicker";
-
+import EmailIcon from '@mui/icons-material/Email';
 
 import {
  
@@ -22,26 +22,17 @@ import {
   SubmitButton
 }
  from "./common";
+import Email from "@mui/icons-material/Email";
 
 function RegistrationForm(props) {
-  const [experience, setExp]= useState(0)
 
-useEffect(()=>{
-  
-  if(formik.values.experience==='Fresher')  {
-    setExp(0)
-  console.log("From use Effect",experience)
-  }
-  else if(formik.values.experience==='1-2 years'){setExp(1)
-  console.log("From use Effect", experience)
-}
-
-},[experience])
-
-
-  
 
   const navigate = useNavigate();
+  const [experience, setExp]= useState(0)
+
+
+
+
   const getresult = (value)=>{
    
     console.log("Accepting  result form the child com")
@@ -83,12 +74,9 @@ console.log(response)
   }
 
 
-  navigate("/TestForm");
+  navigate("/Testpage");
 
 };
-
-
-
 
 const formik = useFormik({
     initialValues: {
@@ -109,10 +97,46 @@ const formik = useFormik({
       user_fk:user_fk,
 
   },
+  
   validateOnBlur: true,
     onSubmit,
 
   });
+
+
+  useEffect(()=>{
+
+    const changeExperience = ()=>{
+
+      if(formik.values.experience==='Fresher')  {
+        console.log("From use Effect",experience)
+        return setExp("0")
+    }
+    
+      else if(formik.values.experience==='1-2 years'){
+        console.log("From use Effect", experience)
+        return setExp("1")
+    }
+
+    else if(formik.values.experience==='2-5 years'){
+      console.log("From use Effect", experience)
+      return setExp("2")
+    }
+    
+    else if(formik.values.experience==='Above 5 years '){
+      console.log("From use Effect", experience)
+      return setExp("3")
+    }
+    
+    
+    } 
+
+    console.log(experience);
+
+  
+  },[])
+
+  
 
 
     return (
@@ -168,8 +192,12 @@ required />
 
 
 
+
 <Label>Date of Birth:   
 <br/>
+
+{/* {<Email sx={{fontSize:56}}/>} */}
+
  <Input_RF3 
  type='date'
  name="DoB"
@@ -258,6 +286,7 @@ value={formik.values.phd_institute}
 </Label>
 <br/>
 
+
 {/* <Label>Job Openings(Apply For):  */}
   {/* <br/>
    <Checkbox type="checkbox" onChange={formik.handleChange} value="IT" required name="job_openings" /> IT/Infrastructure
@@ -284,7 +313,6 @@ required /> */}
 
 <Label>Test Schedule:
   <br/>
-
   <FormControl required>
 
   <RadioGroup aria-labelledby="demo-radio-buttons-group-label" 
@@ -314,4 +342,5 @@ required /> */}
 </>
   );
  }
+
 export default RegistrationForm

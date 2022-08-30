@@ -54,9 +54,10 @@ console.log(" Child Component", score)
 
 }
 
+
   useEffect(()=>{
 
-        Axios.get('http://127.0.0.1:8000/Kavtech/quiz/category1/level0/')
+    Axios.get('http://127.0.0.1:8000/Kavtech/quiz/category1/level0/')
         .then(res => {
            console.log("Getting data from server :::", res.data)
            setData(res.data)

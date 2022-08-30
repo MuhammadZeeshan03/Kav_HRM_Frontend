@@ -103,6 +103,19 @@ const Navbar = () => {
               </NavLink>
             </li>
 
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/jobOpening" exact>
+                <i className="far fa-copy"> </i>Job Openings
+              </NavLink>
+            </li>
+
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/perf" exact>
+                <i className="far fa-copy"> </i>Performance
+              </NavLink>
+            </li>
+
 
 
             {/* <li className="nav-item">
