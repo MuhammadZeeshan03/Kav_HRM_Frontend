@@ -115,6 +115,13 @@ const KavNavbar = () => {
             </li>
 
 
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/performance" exact>
+                <i className="far fa-copy"> </i>Add Performanc
+              </NavLink>
+            </li>
+
+
 
 
             {/* <li className="nav-item">

@@ -29,6 +29,10 @@ function RegistrationForm(props) {
 
   const navigate = useNavigate();
   const [experience, setExp]= useState(0)
+  const [selectedFile,setSelectdfile]= useState()
+  
+
+
 
 
 
@@ -52,6 +56,8 @@ function RegistrationForm(props) {
 const onSubmit = async (values) => {
   const {...data} = values;
   console.log(values)
+
+
 
   const headers ={
 
@@ -95,6 +101,7 @@ const formik = useFormik({
       m_institute:"",
       phd_degree:"",
       phd_institute:"",
+      file:'',
       user_fk:user_fk,
 
   },
@@ -312,11 +319,12 @@ value={formik.values.phd_institute}
  type='file'
  name='file'
 placeholder="Enter Your First Name"
-
+value={formik.values.file}
+onChange={formik.handleChange}
 required /> 
 </Label>
 <br/>
-
+{}
 {/* <Label>Test Schedule:
   <br/>
   <FormControl required>
@@ -341,6 +349,7 @@ required />
 </BoxContainer>
 </FieldContainer_RF2>
 </FieldContainer_RF>
+
 
 <br/>
 <br/>

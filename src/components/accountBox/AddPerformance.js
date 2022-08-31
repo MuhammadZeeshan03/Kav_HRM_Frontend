@@ -8,9 +8,8 @@ import axios from "axios";
 import { decodeToken, getToken } from "./LocalStorageServices";
 import DateTimePicker from "./DateTimePicker";
 import EmailIcon from '@mui/icons-material/Email';
-
 import {
- 
+
   FieldContainer_RF2,
   BoxContainer,
   FieldContainer_RF,
@@ -18,10 +17,12 @@ import {
   Input_RF,
   Input_RF2,
   Input_RF3,
+  numberd_input,
   Label,
   SubmitButton
 }
  from "./common";
+
 
  import Email from "@mui/icons-material/Email";
 import { blue } from "@material-ui/core/colors";
@@ -68,6 +69,7 @@ const formik = useFormik({
       
       date: "",
       task_assigned:"",
+      task_completed:'',
       task_pending:"",
       task_failed:"",
       SP_completed:"",
@@ -84,19 +86,33 @@ const formik = useFormik({
     return (
  
     <>
-<br/>
+    <br/>
 <br/>
 
-{/* 
-<FieldContainer_RF>
+<FieldContainer_RF>,
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Resource
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Resource name A</a>
+    <a class="dropdown-item" href="#">Resource name B</a>
+    <a class="dropdown-item" href="#">Resource name C</a>
+  </div>
+</div>
 <FieldContainer_RF2>
 <BoxContainer>
-  
-<FormContainer onSubmit={formik.handleSubmit}>    */}
+<FormContainer onSubmit={formik.handleSubmit}>
+
 
 {/*////// Date Field ////////////////// */}
 
-{/* <Label>Date  <br/>
+
+
+
+<Label>Date  <br/>
 <Input_RF3
 type='date'
 name="date"
@@ -104,11 +120,9 @@ placeholder="Select Date"
 value={formik.values.date}
 onChange={formik.handleChange}
 onBlur={formik.handleBlur}
-
-
-
-
 required/></Label><br/> 
+
+
 <Label>Task Assigned:   
 <br/>
 <Input_RF3 
@@ -121,35 +135,17 @@ onBlur={formik.handleBlur}
 required />
 </Label>
 
-<br/> */}
-{/* <Label>Email:   
-
-<br/>
- <Input_RF3 
- type={'email'}
- name="email"
-placeholder="Enter Your Email"
-value={formik.values.email}
-onChange={formik.handleChange}
-onBlur={formik.handleBlur}
-required />
-</Label>
-<br/> */}
-
-{/* 
 <Label>Task Completed:   
 <br/>
 <Input_RF3 
 type='number'
 name="task_completed"
 placeholder="Enter Task Completed"
-value={formik.values.task_assigned}
+value={formik.values.task_completed}
 onChange={formik.handleChange}
 onBlur={formik.handleBlur}
 required />
 </Label>
-
-<br/>
 
 <Label>Task Pending:   
 <br/>
@@ -163,22 +159,17 @@ onBlur={formik.handleBlur}
 required />
 </Label>
 
-
-
-
 <Label>QA Failed Task:   
 <br/>
 <Input_RF3 
 type='number'
-name="QA_Failed_tasks"
-placeholder="Enter QA Failed Tasks"
+name="task_failed"
+placeholder="Enter Task Pending"
 value={formik.values.task_failed}
 onChange={formik.handleChange}
 onBlur={formik.handleBlur}
 required />
 </Label>
-
-
 
 <Label>Story Points Completed:   
 <br/>
@@ -204,7 +195,46 @@ onChange={formik.handleChange}
 onBlur={formik.handleBlur}
 required />
 </Label>
+<br/>
+<SubmitButton type="submit"> submit</SubmitButton>
 
+{console.log(formik.values.date)}
+<br/>
+
+{console.log("Task Completed",  formik.values.SP_completed)}
+<br/>
+
+
+{console.log("Task Failed",  formik.values.task_failed)}
+<br/>
+</FormContainer>    
+</BoxContainer>
+</FieldContainer_RF2>
+/</FieldContainer_RF>
+
+{/* 
+  
+
+
+
+{/*   
+
+<br/> */}
+{/* <Label>Email:   
+
+<br/>
+ <Input_RF3 
+ type={'email'}
+ name="email"
+placeholder="Enter Your Email"
+value={formik.values.email}
+onChange={formik.handleChange}
+onBlur={formik.handleBlur}
+required />
+</Label>
+<br/> */}
+
+{/* 
 
 {/* <Label>Job Openings(Apply For):  */}
   {/* <br/>

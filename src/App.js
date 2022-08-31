@@ -49,7 +49,7 @@ function App() {
         <Route path="/contact"  element={<Contact/>} />       
         <Route path="/TestPage" element={<TestPage/>} />
         <Route path="/jobOpening" element={<Jobopenings/>} />
-        {/* <Route path="/perf" element={<AddPerformace/>} /> */}
+        <Route path="/performance" element={<AddPerformace/>} />
         
 
         

@@ -74,6 +74,15 @@ border-bottom: 1px solid rgb(0 0 0 / 19%);
 -webkit-transition: all 200ms ease-in-out;
 -webkit-transition: all 200ms ease-in-out;
 transition: all 200ms ease-in-out;
+
+-webkit-outer-spin-button,
+-webkit-inner-spin-button    
+-webkit-appearance: none;
+    margin: 0;
+
+
+
+
 font-size: 12px;
 
 
@@ -120,6 +129,16 @@ font-size: 12px;
   }
 `;
 
+export const numberd_input = styled.input`
+
+-webkit-outer-spin-button,
+:-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+  
+`
+
 export const Input_RF3 = styled.input`
  width: 50%;
 height: 42px;
@@ -132,6 +151,7 @@ border-bottom: 1px solid rgb(0 0 0 / 19%);
 -webkit-transition: all 200ms ease-in-out;
 transition: all 200ms ease-in-out;
 font-size: 12px;
+
 
 
   &::placeholder {
