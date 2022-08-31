@@ -8,6 +8,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+
+
+
 const data = [
   { name: "January", Total: 1200 },
   { name: "February", Total: 2100 },
