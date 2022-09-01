@@ -31,6 +31,7 @@ import { AccountContext } from "./accountContext";
 import './validity.css';
 import { nodeName } from "jquery";
 import validator from 'validator'
+import { Alert } from "bootstrap";
 
 
 const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
@@ -145,6 +146,9 @@ const onSubmit = async (values) => {
   if (response && response.data) {
     setError(null);
     setSuccess(response.data.message);
+    
+  Alert("Signed UP SuccessFully!")
+
     formik.resetForm();
   }
 };

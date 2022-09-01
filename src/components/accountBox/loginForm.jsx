@@ -21,22 +21,14 @@ function LoginForm(props) {
 
   const navigate = useNavigate();
 
-  const [inpval,setInpval]=useState({
-    username:"",
-    password:""
-})
-
-let [ authTokens, setAuthTokens] = useState(() => (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) :  null))
-let [user, setUser] = useState(()=> (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) :  null))
 
   const { switchToSignup } = useContext(AccountContext);
-  const [error, setError] = useState(null);
-  
+  const [error, setError] = useState(null);  
 
 const loginUser = async (e)=>{
   e.preventDefault()
   console.log("Form Submitted")
- 
+
 let response = await fetch('http://127.0.0.1:8000/Kavtech/login/',
   {method:'POST',
     headers:{
@@ -46,14 +38,29 @@ let response = await fetch('http://127.0.0.1:8000/Kavtech/login/',
       'email':e.target.email.value,
       'password':e.target.password.value})
   })
+
   let data = await response.json()
 console.log("data",data)
 console.log("Response",response)
 
 if(response.status===200){
-  storeToken(data.token);
+storeToken(data.token);
+alert(data.msg)
 
+if(data.userType==='admin')
+{
   navigate("/");
+}
+
+if(data.userType==='scrum'){
+  navigate('/performance')
+}
+
+else{
+    
+  navigate('/home')
+
+}
 
 }
 else{

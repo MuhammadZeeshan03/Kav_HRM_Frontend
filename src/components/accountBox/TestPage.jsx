@@ -52,6 +52,7 @@ export default function TestPage() {
           
     
     const response = await axios
+    
     .post("http://127.0.0.1:8000/Kavtech/quiz/test/",test_data,{
         headers:headers
     })

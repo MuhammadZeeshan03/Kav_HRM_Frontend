@@ -38,7 +38,26 @@ export const userColumns = [
   },
 ];
 
-//temporary data
+
+
+
+// Here is the API to get Data from the Backend
+//   const userRows = await axios
+//   .get(" ... LINK FROM BACKEND TEAM . . . ", data,{
+// headers: headers
+//   }).catch((err) => {
+//     console.log(err)
+// });
+// }
+// Hard Codded
+// Once backend Ready will get this data from the server
+//  Later we will fetch this data from the backend
+
+
+
+
+
+
 export const userRows = [
   {
     id: 1,

@@ -10,6 +10,7 @@ const Datatable = () => {
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
+  
 
   const actionColumn = [
     {

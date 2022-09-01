@@ -8,6 +8,26 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const List = () => {
+
+    
+// Here is the API to get Data from the Backend
+
+//   const rows = await axios
+//   .post(" ... LINK FROM BACKEND TEAM . . . ", data,{
+// headers: headers
+//   }).catch((err) => {
+//     console.log(err)
+// });
+
+// console.log(response)
+// if (response && response.data) {
+//   formik.resetForm();
+// }
+
+
+// Hard Codded
+// Once backend Ready will get this data from the server
+
   const rows = [
     {
       id: 1143155,
@@ -32,8 +52,7 @@ const List = () => {
       img: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_UY327_FMwebp_QL65_.jpg",
       resource: "John Smith",
       date_started: "1 March",
-  
-      
+    
       status: "In-Progress",
     },
    

@@ -39,31 +39,34 @@ function AddPerformace(props) {
 }
 
 
-// const headers ={
 
-//   'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("Access_token")),
-//   'Content-Type': 'application/json',
-//   'accept': 'application/json',
-// }
-// console.log(headers.Authorization)
+const handleSubmit =  async (values) =>{
 
-// const response =  axios
-//     .post("http://127.0.0.1:8000/Kavtech/profile/", data,{
-// headers: headers
-//     }).catch((err) => {
-//       console.log(err)
-// });
+  const {...data} = values; 
+console.log(values)
 
-// console.log(response)
-//   if (response && response.data) {
-//     formik.resetForm();
-//   }
+const headers ={
+
+  'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("Access_token")),
+  'Content-Type': 'application/json',
+  'accept': 'application/json',
+}
+console.log(headers.Authorization)
 
 
-//   navigate("/TestForm");
+const response = await axios 
+.post ('link from backend',data,{
+  headers:headers
+});
 
-// };
+console.log(response)
+if(response && response.data){
+  formik.resetForm();
+}
 
+
+
+}
 const formik = useFormik({
     initialValues: {
       
@@ -91,17 +94,19 @@ const formik = useFormik({
 
 <FieldContainer_RF>,
 
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div className="dropdown">
+  <button style={{marginLeft :50}} className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Select Resource
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Resource name A</a>
-    <a class="dropdown-item" href="#">Resource name B</a>
-    <a class="dropdown-item" href="#">Resource name C</a>
+  <div class="dropdown-menu" 
+  aria-labelledby="dropdownMenuButton">
+
+    <a className="dropdown-item" value={"Resource name "}>Resource name A</a>
+    <a className="dropdown-item" >Resource name B</a>
+    <a className="dropdown-item" >Resource name C</a>
   </div>
 </div>
+
 <FieldContainer_RF2>
 <BoxContainer>
 <FormContainer onSubmit={formik.handleSubmit}>
@@ -197,13 +202,10 @@ required />
 </Label>
 <br/>
 <SubmitButton type="submit"> submit</SubmitButton>
-
 {console.log(formik.values.date)}
 <br/>
-
 {console.log("Task Completed",  formik.values.SP_completed)}
 <br/>
-
 
 {console.log("Task Failed",  formik.values.task_failed)}
 <br/>
