@@ -9,18 +9,20 @@ import Table from "../../components/table/Table";
 const Home = () => {
   return (
     <div className="home">
-      <Sidebar />
+      <Sidebar  var={window.location.pathname}/>
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="resource" />
-          <Widget type="sprint" />
-          <Widget type="success-rate" />
-          <Widget type="attendance" />
+        <Widget type="resource"  var={window.location.pathname}/>
+          <Widget type="sprint" var={window.location.pathname}/>
+          <Widget type="success-rate"  var={window.location.pathname}/>
+          <Widget type="attendance" var={window.location.pathname}/>
         </div>
         <div className="charts">
-          <Featured />
-          <Chart title="Last 6 Months (Performance)" aspect={2 / 1} />
+        
+        
+          <Featured var={window.location.pathname} />
+          <Chart title="Last 6 Months (Performance)" aspect={2 / 1} var={window.location.pathname} />
         </div>
         <div className="listContainer">
           <div className="listTitle">All Resources</div>

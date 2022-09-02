@@ -8,6 +8,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { Link } from './../Footer/styles/footer';
 
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -44,12 +45,16 @@ const Navbar = () => {
           <div className="items">
             <ListOutlinedIcon className="icons" />
           </div>
-          <div className="items">
+          <div className="items  dropdown">
+            <a>
             <img
+
               src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
               alt=""
               className="avatar"
+              
             />
+            </a>
           </div>
         </div>
       </div>

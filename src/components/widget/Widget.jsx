@@ -5,14 +5,111 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
-const Widget = ({ type }) => {
+const Widget = (props) => {
   let data;
-
-  //temporary
+//temporary
   const amount = 100;
+  const lineups= 'HRM';
   const diff = 20;
 
-  switch (type) {
+if(props.var==='/Employee'){
+  
+
+  switch (props.type) {
+    case "resource":
+    
+    data = {
+        title: "Attendance",
+        isMoney: false,
+        link: "See Details ",
+        icon: (
+          <PersonOutlinedIcon
+            className="icon"
+            style={{
+              color: "crimson",
+              backgroundColor: "rgba(255, 0, 0, 0.2)",
+            }}
+          />
+        ),
+      };
+      break;
+    case "sprint":
+      data = {
+        title: "SprintCompleted",
+        isMoney: false,
+        link: "View all Sprints",
+        icon: (
+          <ShoppingCartOutlinedIcon
+            className="icon"
+            style={{
+              backgroundColor: "rgba(218, 165, 32, 0.2)",
+              color: "goldenrod",
+            }}
+          />
+        ),
+      };
+      break;
+    case "success-rate":
+      data = {
+        title: "Success Rate",
+        isMoney: false,
+        link: "View net success",
+        icon: (
+          <MonetizationOnOutlinedIcon
+            className="icon"
+            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
+          />
+        ),
+      };
+      break;
+    case "attendance":
+      data = {
+        title: "TaskCompleted",
+        isMoney: false,
+        link: "See details",
+        icon: (
+          <AccountBalanceWalletOutlinedIcon
+            className="icon"
+            style={{
+              backgroundColor: "rgba(128, 0, 128, 0.2)",
+              color: "purple",
+            }}
+          />
+        ),
+      };
+      break;
+    default:
+      break;
+  }
+
+  return (
+    <div className="widget">
+      <div className="left">
+        <span className="title">{data.title}</span>
+        <span className="counter">
+          {data.isMoney && "$"} {amount}
+        </span>
+        <span className="link">{data.link}</span>
+      </div>
+      <div className="right">
+        <div className="percentage positive">
+          <KeyboardArrowUpIcon />
+          {diff} %
+        </div>
+        {data.icon}
+      </div>
+    </div>
+  );
+
+
+
+
+
+}
+
+
+
+  switch (props.type) {
     case "resource":
       data = {
         title: "Resources",

@@ -5,7 +5,35 @@ import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 
-const Featured = () => {
+import { PieChart, Pie} from 'recharts';
+
+
+const Featured = (props) => {
+  
+
+  const pie_data = [
+    {name: 'Geeksforgeeks', students: 400},
+    {name: 'Technical scripter', students: 700},
+    {name: 'Geek-i-knack', students: 200},
+    {name: 'Geek-o-mania', students: 1000}
+  ];
+    
+
+  if(props.var==='/Employee')
+  {
+     return (
+    <>
+           <div className="chart">
+  <PieChart width={300} height={350}>
+          <Pie data={pie_data} dataKey="students" outerRadius={150} fill="#5485ab" />
+          
+        </PieChart>
+
+        </div>
+      </>
+    )    
+  }
+  
   return (
     <div className="featured">
       <div className="top">

@@ -51,9 +51,7 @@ function App() {
         <Route path="/jobOpening" element={<Jobopenings/>} />
         <Route path="/performance" element={<AddPerformace/>} />
         
-
-        
-        <Route path="/LoginForm" element={ 
+      <Route path="/LoginForm" element={ 
               <AppContainer> 
                 <AccountBox /> 
               </AppContainer>} />
@@ -63,6 +61,7 @@ function App() {
 
     <Route path='/RegistrationForm' element={<RegistrationForm/>}  /> 
   </Route>
+
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
@@ -83,6 +82,38 @@ function App() {
               />
             </Route>
           </Route>
+
+
+            
+          <Route path="/Employee">
+
+            <Route index element={<Home var={window.location.pathname}/>} />
+            <Route path="login" element={<Login />} />
+            <Route path="users">
+              <Route index element={<List />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+            <Route path="products">
+              <Route index element={<List />} />
+              <Route path=":productId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+          </Route>
+
+
+
+
+
+
+
+
         </Routes>
         </main>
       <FooterContainer />

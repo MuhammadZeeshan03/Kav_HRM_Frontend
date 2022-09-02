@@ -15,9 +15,86 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  
+const { dispatch } = useContext(DarkModeContext);
 
- const { dispatch } = useContext(DarkModeContext);
+if(props.var==="/Employee")
+{ 
+  return (
+
+    <div className="sidebar">
+    <div className="top">
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <span className="logo">Employee</span>
+      </Link>
+    </div>
+    <hr />
+
+    <div className="center">
+      <ul>
+        <p className="title">MAIN</p>
+        <li>
+          <DashboardIcon className="icon" />
+          <span>My Space</span>
+        </li>
+        <p className="title">LISTS</p>
+
+          <li>
+            <StoreIcon className="icon" />
+            <span>Jira</span>
+          </li>
+
+
+
+
+          <li>
+            <StoreIcon className="icon" />
+            <span>Projects</span>
+          </li>
+
+ <p className="title">Stats</p>
+        <li>
+          <InsertChartIcon className="icon" />
+          <span>Anaytics</span>
+        </li>
+        <li>
+          <NotificationsNoneIcon className="icon" />
+          <span>To-do List</span>
+        </li>
+  
+        <p className="title">USER</p>
+        <li>
+          <AccountCircleOutlinedIcon className="icon" />
+          <span>Profile</span>
+        </li>
+        <li>
+          <ExitToAppIcon className="icon" />
+          <span>Logout</span>
+        </li>
+      </ul>
+    </div>
+    <div className="bottom">
+      <div
+        className="colorOption"
+        onClick={() => dispatch({ type: "LIGHT" })}
+      ></div>
+      <div
+        className="colorOption"
+        onClick={() => dispatch({ type: "DARK" })}
+      ></div>
+    </div>
+  </div>
+   
+)
+
+
+
+
+}
+
+else
+{
   return (
     <div className="sidebar">
       <div className="top">
@@ -44,14 +121,20 @@ const Sidebar = () => {
 
           </Link>
           
-          <Link to="/projects" style={{ textDecoration: "none" }}>
+          {/* <Link to="/projects" style={{ textDecoration: "none" }}> */}
             <li>
               <StoreIcon className="icon" />
               <span>Projects</span>
             </li>
-          </Link>
+          {/* </Link> */}
           
-          <p className="title">Stats</p>
+          <Link to="/projects" style={{ textDecoration: "none" }}>
+            <li>
+              <StoreIcon className="icon" />
+              <span>Jira</span>
+            </li>
+          </Link>
+   <p className="title">Stats</p>
           <li>
             <InsertChartIcon className="icon" />
             <span>Anaytics</span>
@@ -87,6 +170,7 @@ const Sidebar = () => {
       </div>
     </div>
   );
+}
 };
 
 export default Sidebar;
