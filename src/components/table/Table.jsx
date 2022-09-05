@@ -7,9 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const List = () => {
+const List = (props) => {
 
-    
+      if(props.var==='/Employee'){
+    return null
+  }
 // Here is the API to get Data from the Backend
 
 //   const rows = await axios

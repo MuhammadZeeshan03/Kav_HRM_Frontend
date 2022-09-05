@@ -25,7 +25,8 @@ if(props.var==="/Employee")
 
     <div className="sidebar">
     <div className="top">
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/Employee" style={{ textDecoration: "none" }}>
+
         <span className="logo">Employee</span>
       </Link>
     </div>
@@ -40,11 +41,12 @@ if(props.var==="/Employee")
         </li>
         <p className="title">LISTS</p>
 
+        <Link to="/Jira" style={{ textDecoration: "none" }}>
           <li>
             <StoreIcon className="icon" />
-            <span>Jira</span>
+            <span onClick={console.log("Clicked")}>Jira</span>
           </li>
-
+          </Link>
 
 
 
@@ -128,7 +130,7 @@ else
             </li>
           {/* </Link> */}
           
-          <Link to="/projects" style={{ textDecoration: "none" }}>
+          <Link to="/Jira" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>Jira</span>

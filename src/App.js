@@ -6,7 +6,7 @@ import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
-import { useContext } from "react";
+import { useContext , useState } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { FooterContainer } from './components/Footer/containers/footer'
 import About from './pages/About/About';
@@ -21,8 +21,8 @@ import RegistrationForm from './components/accountBox/RegistrationForm';
 import LoginForm from './components/accountBox/loginForm';
 import Jobopenings from './components/accountBox/Jobopenings';
 import AddPerformace from './components/accountBox/AddPerformance';
+import Alert from "./components/accountBox/Alert";
 import PrivateRoute from './components/accountBox/PrivateRoute'
-
 const AppContainer = styled.div`  
   width: 100%;
   padding-right: 48px !important;
@@ -33,15 +33,30 @@ const AppContainer = styled.div`
   justify-content: center;
 `;
 
+
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  const [alert, setalert] = useState(null);
 
+
+  const showAlert = (message,type)=>{
+  setalert({
+  msg:message,
+  type:type
+})
+
+setTimeout(() => {
+  setalert(null)
+
+}, 1500);
+
+  }
   return (  
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
       <KavNavbar/>
+      <Alert alert={alert}/>
       <main>
-
       <Routes>
         <Route path="/Home" element={<KavHome/>}  />
         <Route path="/about" element={<About/>}/>
@@ -53,7 +68,7 @@ function App() {
         
       <Route path="/LoginForm" element={ 
               <AppContainer> 
-                <AccountBox /> 
+                <AccountBox  alert={showAlert}/> 
               </AppContainer>} />
 
 

@@ -45,7 +45,9 @@ console.log("Response",response)
 
 if(response.status===200){
 storeToken(data.token);
-alert(data.msg)
+
+props.alert((data.msg),'success')
+
 
 if(data.userType==='admin')
 {
@@ -57,16 +59,16 @@ if(data.userType==='scrum'){
 }
 
 else{
-    
+    console.log("Home Pge")
   navigate('/home')
 
 }
 
 }
 else{
-  alert("Something Went wrong!!!")
-}
 
+  props.alert((data.errors.non_field_errors[0]),'danger')
+}
 }
 
 return (

@@ -6,6 +6,7 @@ import { AccountContext } from "./accountContext";
 import { SignupForm } from "./signup";
 import { FormContainer } from "./common";
 import illustration from '../../assets/logoss.png';
+import { Alert } from 'bootstrap';
 
 const BoxContainer = styled.div`
   // margin-left: auto;
@@ -169,8 +170,8 @@ export function AccountBox(props) {
           
         </TopContainer>
         <InnerContainer>
-        {active === "signin" && <LoginForm />}
-          {active === "signup" && <SignupForm />}
+        {active === "signin" && <LoginForm alert={props.alert} />}
+          {active === "signup" && <SignupForm  alert={props.alert}/>}
           
           
         </InnerContainer>

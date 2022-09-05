@@ -7,11 +7,13 @@ import { Button,Link } from '@material-ui/core';
 import { useFormik } from "formik";
 import {GoogleLogin} from 'react-google-login';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Navigate } from 'react-router-dom';
 import Icon  from './icon';
 import useStyles from './styles';
 import * as yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import { AUTH } from '../../components/constants/actionTypes';
 import {
   BoldLink,
@@ -58,7 +60,7 @@ export function SignupForm(props) {
 
   const [show, setShow] = useState(false);
 const { switchToSignin } = useContext(AccountContext);
-
+const navigate = useNavigate();
 
 
 //pasword strength meter
@@ -100,8 +102,10 @@ const App = () => {
   
   const [errorMessage, setErrorMessage] = useState('')
   
+
   const validate = (value) => {
   
+
     if (validator.isStrongPassword(value, {
       minLength: 8, minLowercase: 1,
       minUppercase: 1, minNumbers: 1, minSymbols: 1
@@ -146,13 +150,17 @@ const onSubmit = async (values) => {
   if (response && response.data) {
     setError(null);
     setSuccess(response.data.message);
-    
-  Alert("Signed UP SuccessFully!")
 
+    props.alert(response.data.msg +'you will be redirected. . . ' ,'success')
     formik.resetForm();
+
+    setTimeout(() => {
+      switchToSignin() 
+    
+    }, 1000);
+
   }
 };
-
 const formik = useFormik({
   initialValues: {
     name: "",
