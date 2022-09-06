@@ -143,6 +143,7 @@ const onSubmit = async (values) => {
     
     .catch((err) => {
       if (err && err.response) setError(err.response.data.message);
+      props.alert(err.response.data.errors.email[0],'warning')
       setSuccess(null);
      
     });
@@ -151,15 +152,17 @@ const onSubmit = async (values) => {
     setError(null);
     setSuccess(response.data.message);
 
+
+
     props.alert(response.data.msg +'you will be redirected. . . ' ,'success')
     formik.resetForm();
 
     setTimeout(() => {
       switchToSignin() 
-    
     }, 1000);
 
   }
+
 };
 const formik = useFormik({
   initialValues: {
@@ -249,7 +252,6 @@ const formik = useFormik({
         <FormContainer>
       </FormContainer>
         
-       
            <div id="password-strength" 
             
            style={changePasswordColor()}
@@ -273,5 +275,3 @@ const formik = useFormik({
     </BoxContainer>
   );
 }
-
-
