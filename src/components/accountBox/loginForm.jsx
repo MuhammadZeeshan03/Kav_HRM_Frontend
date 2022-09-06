@@ -59,8 +59,9 @@ if(data.userType==='scrum'){
 }
 
 else{
-    console.log("Home Pge")
-  navigate('/home')
+  props.alert(response.data.msg +'you will be redirected. . . ' ,'success')
+    
+    navigate('/home')
 
 }
 

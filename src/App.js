@@ -23,6 +23,8 @@ import Jobopenings from './components/accountBox/Jobopenings';
 import AddPerformace from './components/accountBox/AddPerformance';
 import Alert from "./components/accountBox/Alert";
 import PrivateRoute from './components/accountBox/PrivateRoute'
+
+import Jira from "./pages/Jira/Jira";
 const AppContainer = styled.div`  
   width: 100%;
   padding-right: 48px !important;
@@ -55,8 +57,9 @@ setTimeout(() => {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
       <KavNavbar/>
+      <br/>
       <Alert alert={alert}/>
-      <main>
+      <main style={{marginTop: 65}}>
       <Routes>
         <Route path="/Home" element={<KavHome/>}  />
         <Route path="/about" element={<About/>}/>
@@ -66,6 +69,10 @@ setTimeout(() => {
         <Route path="/jobOpening" element={<Jobopenings/>} />
         <Route path="/performance" element={<AddPerformace/>} />
         
+
+        <Route path="/Jira" element={<Jira/>} />
+
+
       <Route path="/LoginForm" element={ 
               <AppContainer> 
                 <AccountBox  alert={showAlert}/> 

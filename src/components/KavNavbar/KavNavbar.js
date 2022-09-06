@@ -47,8 +47,8 @@ const KavNavbar = () => {
 
 
   return (
-  <nav className="navbar navbar-expand-lg navbar-mainbg"
-   style={{padding: "-0.5rem 1rem"}}
+  <nav className="navbar fixed-top navbar-expand-lg navbar-mainbg"
+   style={{paddingTop: "-0.5rem 1rem", marginBottom: 70}}
    
    >
     

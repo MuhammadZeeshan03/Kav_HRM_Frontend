@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './alert.css'
 function Alert(props) {
 
  const capitalize = (word)=>{
@@ -7,7 +7,7 @@ function Alert(props) {
   return lower.charAt(0).toUpperCase() + lower.slice(1);
  }
   return ( 
-  props.alert &&  <div className= {`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert"><strong>  {capitalize(props.alert.type)}</strong> {props.alert.msg}  </div> 
+  props.alert &&  <div className= {`alert fixed-top alert-${props.alert.type}  alert-dismissible fade show`} role="alert"><strong>  {capitalize(props.alert.type)}</strong> {props.alert.msg}  </div> 
 )
 }
 export default Alert
