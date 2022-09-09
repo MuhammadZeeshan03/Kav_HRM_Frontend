@@ -20,8 +20,6 @@ import {storeToken } from "./LocalStorageServices";
 function LoginForm(props) {
 
   const navigate = useNavigate();
-
-
   const { switchToSignup } = useContext(AccountContext);
   const [error, setError] = useState(null);  
 
@@ -46,22 +44,27 @@ console.log("Response",response)
 if(response.status===200){
 storeToken(data.token);
 
+
 props.alert((data.msg),'success')
 
+setTimeout(() => {
+  navigate('/RegistrationForm')
+  
+}, 1500);
 
 if(data.userType==='admin')
 {
   navigate("/");
 }
-
 if(data.userType==='scrum'){
   navigate('/performance')
 }
 
 else{
   props.alert(response.data.msg +'you will be redirected. . . ' ,'success')
-    
-    navigate('/home')
+
+  console.log('object')
+
 
 }
 

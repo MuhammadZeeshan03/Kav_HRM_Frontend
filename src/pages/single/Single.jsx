@@ -11,6 +11,7 @@ const Single = () => {
       <div className="singleContainer">
         <Navbar />
         <div className="top">
+        
           <div className="left">
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
@@ -43,6 +44,8 @@ const Single = () => {
               </div>
             </div>
           </div>
+
+
           <div className="right">
             <Chart aspect={3 / 1} title="User Performance ( Last 6 Months)" />
           </div>

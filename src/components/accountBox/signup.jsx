@@ -13,7 +13,7 @@ import useStyles from './styles';
 import * as yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import ReCAPTCHA from "react-google-recaptcha";
 import { AUTH } from '../../components/constants/actionTypes';
 import {
   BoldLink,
@@ -47,7 +47,17 @@ const validationSchema = yup.object({
   password: yup
     .string()
     .matches(PASSWORD_REGEX, "Please enter a strong password")
-    .required()
+    .required(),
+  confirm_password: yup
+    .string()
+    .required("Please confirm your password")
+    .when("password", {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: yup
+        .string()
+        .oneOf([yup.ref("password")], "Password does not match"),
+    }),
+  
 });
 
 
@@ -164,11 +174,20 @@ const onSubmit = async (values) => {
   }
 
 };
+
+const handleOnChage = (value) =>{
+
+
+
+  console.log("Captcha value:", value);
+  
+}
 const formik = useFormik({
   initialValues: {
     name: "",
     email: "",
     password: "",
+    confirm_password: "",
     
   },
   validateOnBlur: true,
@@ -183,6 +202,7 @@ const formik = useFormik({
 
     <BoxContainer>
        {!error && <FormSuccess>{success ? success : ""}</FormSuccess>}
+
       {!success && <FormError>{error ? error : ""}</FormError>}
   
       <FormContainer onSubmit={formik.handleSubmit}>
@@ -200,9 +220,9 @@ const formik = useFormik({
               : ""}
           </FieldError>
         </FieldContainer>
+        
         <FieldContainer>
-          
-          <Input
+      <Input
             name="email"
             placeholder="Email"
             value={formik.values.email}
@@ -232,38 +252,53 @@ const formik = useFormik({
         </FieldContainer>
         {show ? (
        <FontAwesomeIcon 
-       className="faEye" icon={faEye} 
-         
+       className="faEye" icon={faEye}      
           id="show_hide" 
-          
           onClick={handleShowHide}
           />
-
           ) : (
             <FontAwesomeIcon 
-            className="faEyeslash" icon={faEyeSlash} 
-              
+            className="faEyeslash" icon={faEyeSlash}   
                id="show_hide" 
-               
                onClick={handleShowHide}
                />
-
           )}
-        <FormContainer>
+      <FormContainer>
+      <FieldContainer> 
+       <Input 
+        name="confirm_password"
+        type= {show ? "text" : "password"}
+        placeholder="Confirm Password" 
+        // onChange={handleInputChange}
+        value={formik.values.confirm_password}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        /> 
+         <FieldError>
+            {formik.touched.confirm_password && formik.errors.confirm_password
+              ? formik.errors.confirm_password
+              : ""}
+          </FieldError>
+          </FieldContainer>
+
+          <ReCAPTCHA
+    sitekey="6Lfubt0hAAAAAJQkKvPsRjsxy2E2D86cBu5PJKZd"
+    onChange={handleOnChage}
+  />,
+{/* <input type="submit" name="submit"  className='btn btn-primary'/> */}
+
+
+
       </FormContainer>
-        
+
            <div id="password-strength" 
-            
            style={changePasswordColor()}
             >
-
            </div>
-      
       <Marginer direction="vertical" margin="1em" />
         <SubmitButton type="submit" disabled={!formik.isValid}>
           Signup
         </SubmitButton>
-        
         </FormContainer>
     <Marginer direction="vertical" margin={5} />
       <MutedLink href="#">

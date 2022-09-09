@@ -70,9 +70,7 @@ const  getResult=(score)=> {
     return (
         <>
 <br/>
-<FieldContainer_RF> 
-
-    <BoxContainer> You have total 10 numbers of Questions.</BoxContainer>
+<FieldContainer_RF > 
 
 <BoxContainer >
     <br/>
@@ -83,8 +81,10 @@ const  getResult=(score)=> {
 </BoxContainer>
 
 <br/>
-<h1 style={{color:"red" , padding:"34px 0px 0px"}}> Rendering 100 questions from a server!! </h1>
+{/* <h1 style={{color:"red" , padding:"34px 0px 0px"}}> Rendering 100 questions from a server!! </h1> */}
+
 <div style={{color:"blue" , padding:"34px"}}>
+
 
 
 

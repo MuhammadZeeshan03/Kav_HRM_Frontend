@@ -9,6 +9,9 @@ import { decodeToken, getToken } from "./LocalStorageServices";
 import DateTimePicker from "./DateTimePicker";
 // import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person'
+
+import './registration.css'
+import './registration.css'
 import {
  
   FieldContainer_RF2,
@@ -31,9 +34,6 @@ function RegistrationForm(props) {
   const [experience, setExp]= useState(0)
   const [selectedFile,setSelectdfile]= useState()
   
-
-
-
 
 
 
@@ -143,28 +143,29 @@ const formik = useFormik({
 
   
   },[])
-
-  
-
    
     return (
+
  
 <>
 
+
 <br/>
 <br/>
 
 
-<FieldContainer_RF>
-<FieldContainer_RF2>
+
+
+<FieldContainer_RF >
+<FieldContainer_RF2 >
 <br/>
 <br/>
-<BoxContainer>
+
 <FormContainer onSubmit={formik.handleSubmit}>   
 
 
-<Label>First Name:<br/>
-
+<Label>First Name:
+<br/>
 {/* <PersonIcon color="primary" fontSize="large"/> */}
 
 <Input_RF3
@@ -174,7 +175,11 @@ placeholder="Enter Your Last Name"
 value={formik.values.first_name}
 onChange={formik.handleChange}
 onBlur={formik.handleBlur}
-required/></Label><br/> 
+
+
+
+required/>
+</Label><br/> 
 <Label>Last Name:   
 <br/>
 <Input_RF3 
@@ -346,7 +351,6 @@ required />
 {/* </Label> */}
 
 </FormContainer>
-</BoxContainer>
 </FieldContainer_RF2>
 </FieldContainer_RF>
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import './jobOpenings.css'
+
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Radio, RadioGroup } from '@material-ui/core';
 import { FormControl,FormControlLabel,FormLabel  } from '@mui/material';
@@ -9,9 +11,10 @@ import axios from "axios";
 import { decodeToken, getToken } from "./LocalStorageServices";
 import DateTimePicker from "./DateTimePicker";
 import EmailIcon from '@mui/icons-material/Email';
+import RegistrationForm from './RegistrationForm';
 
    import {
-    ListItem, 
+ ListItem, 
     FormContainer_2,
     Label,
     SubmitButton
@@ -51,10 +54,11 @@ const data =[
 function Jobopenings() {
 
     const navigate = useNavigate();
-
+    const [apply, setapply] = useState();
 
 
     const onSubmit = (values)=>{
+        setapply(true)
 
         const {...data} = values;
         if(data.sched_test==='now'){
@@ -63,8 +67,6 @@ function Jobopenings() {
         console.log(data)
 
     }
-
-
 
     const getresult = (value)=>{
         
@@ -76,32 +78,9 @@ function Jobopenings() {
         {<h6> Test Scheduled Successfully! you will be notified</h6>}
 
       }
-    
-    
-    // const onSubmit = async (values) => {
-    //     const {...data} = values;
-    //     console.log(values)
-      
-    //     const headers ={
-      
-    //     'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("Access_token")),
-    //     'Content-Type': 'application/json',
-    //     'accept': 'application/json',
-    //   }
-    //   console.log(headers.Authorization)
-      
-    //   const response = await axios
-    //       .post("http://127.0.0.1:8000/Kavtech/profile/", data,{
-    //   headers: headers
-    //       }).catch((err) => {
-    //         console.log(err)
-    //   });
-      
-    //   console.log(response)
-    //     if (response && response.data) {
-    //       formik.resetForm();
-    //     }
-      
+const handleClick =()=>{
+setapply(true)
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -114,17 +93,15 @@ function Jobopenings() {
     
 
     
-    const map_Fun = data.map((val, index)=>  
-    
-<FormContainer_2 onSubmit={formik.handleSubmit}>   
-
-    <ListItem key={val.id}>
-
+  const map_Fun = data.map((val, index)=>  
+<FormContainer_2 key={val.id} onSubmit={formik.handleSubmit}>   
+    <ListItem >
+      
 <div  className='card1'>
 <h1 > {val.title} </h1>
 <div className='container1' >
 <h5> {val.description} </h5>
-<Label>Test Schedule:
+{/* <Label>Test Schedule:
   <br/>
 
 
@@ -140,25 +117,20 @@ function Jobopenings() {
   <br/>
 
   </RadioGroup>
-</Label>
+</Label> */}
 
-
-<SubmitButton type="submit"> submit</SubmitButton>
-
+<SubmitButton type="submit" onClick={handleClick}> submit</SubmitButton>
 
 </div>
  </div>
  </ListItem>
-     
     </FormContainer_2>
     ); 
-
   return (
     <div>
-
+    {/* <RegistrationForm/> */}
 {map_Fun}
     </div>
   )
 }
-
 export default Jobopenings

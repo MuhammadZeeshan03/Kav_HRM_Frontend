@@ -3,6 +3,17 @@ import { useEffect } from 'react';
 import  Axios  from 'axios';
 import { useState } from 'react';
 import { Input_RF} from './common';
+
+
+import {
+ 
+  TimerBox,
+  BoxContainer,
+  FieldContainer_RF,
+  SubmitButton,
+
+} from "./common";
+
 function JsonData(props) {
 
   const [data,setData] = useState([])
@@ -70,14 +81,13 @@ console.log(" Child Component", score)
    
    return(
     <>
-  <h1> <br/>{data.title} </h1> <br/>
 
-
+ <h1> <br/>{data.title} </h1> <br/>
 
 
   <div onChange={handleChange}>
   
-    <Input_RF 
+    <Input_RF  
     type="radio"
     value={data.opt_1}  
     name={data.id}
@@ -123,5 +133,6 @@ console.log(" Child Component", score)
     </div>
   )
 }
+
 
 export default JsonData

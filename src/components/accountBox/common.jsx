@@ -105,7 +105,7 @@ export const Input_RF = styled.input`
 height: 20px;
 outline: none;
 border: 1px solid rgb(54 54 54 / 19%);
-
+// background-color:red;
 padding-left:10px;
 border-bottom: 1px solid rgb(0 0 0 / 19%);
 -webkit-transition: all 200ms ease-in-out;
@@ -323,14 +323,16 @@ border-radius:18px;
 
 `;
 
+
+
 export const FieldContainer_RF = styled.div`
   width: 50%;
   margin:auto;
   display: flex;
   flex-direction: column;
-  // background: #3c67954a;
-  background:#c9c9c9;
-  border-radius: 25px;
+  background: #3c67954a;
+  // background:white;
+  border-radius: 20px;
 
   box-shadow: 20px 20px 10px grey;
   

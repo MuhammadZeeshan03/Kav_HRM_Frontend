@@ -128,6 +128,12 @@ const KavNavbar = () => {
               </NavLink>
             </li>
 
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/userprofile" exact>
+                <i className="far fa-copy"> </i>User Profile
+              </NavLink>
+            </li>
+
 
 
 
